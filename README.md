@@ -1,47 +1,45 @@
 # FinalProject
 
-# Project Title and purpose
+# Ball n' Bounce
 
-One Paragraph of project description goes here
+When the mouse it clicked, a ball will be released at a random velocity. It will then bounce and the goal is to get the ball into one of the four boxes. The ball can only go in through the top of the box and will bounce of the other sides. Every time you get a ball into a box you get ten points.
 
 ### Difficulties or opportunities you encountered along the way.
 
-The toughest part was...
+The toughest part was figuring out how to code the ball class so that the ball would only go in through the top and bounce off all of the other sides.
 
 ### Most interesting piece of your code and explanation for what it does.
 
 ```Java
-void keyPressed() {
-  if (keyCode == LEFT) {
-    tree= tree.getLeft();
-    System.out.println(tree.getValue());
-    String s=(String)tree.getValue();
-    fill(155);
-    textSize(50);
-  } else if (keyCode == RIGHT) {
-    tree = tree.getRight();
-    System.out.println(tree.getValue());
-    String s=(String)tree.getValue();
-    fill(155);
-    textSize(50);
-  } else if (tree.getLeft()==null&&tree.getRight()==null) {
-    System.out.println(tree.getValue());
-    tree=t.returnTree();
-  }
-}
+Ball() {
+   location = new PVector(100,100);
+   velocity = new PVector(r,2.1);
+   gravity = new PVector(0,0.2);
+   location.x=mouseX;
+   location.y=mouseY;
+   }
+   
+   void display() {
+   location.add(velocity);
+   velocity.add(gravity);
+   if ((location.x > width) || (location.x < 0)) {
+     velocity.x = velocity.x * -1;
+   }
+   if (location.y > height) {
+     velocity.y = velocity.y * -0.95; 
+     location.y = height;
+   }
 ```
-This is the code that moves down the tree as decisions are made.  It gets each value from both left and right and also casts the value to a String.  If the progressions arrives at the leaf nodes, those values are printed.
+This is the code that creates the velocity of the ball and determines how high, fast, and where the ball will bounce. Wherever the mouse is, the ball will drop and the velocity will change every time depending on where the mouse is.
 ## Built With
 
 * [Processing](https://processing.org/) - The IDE used
 
 ## Authors
 
-* **Billie Thompson** 
+* **Anoushka Sunkum and Jenna Grutzmacher** 
 
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Thank you to Dr. R who helped us figure out various parts of our code!
